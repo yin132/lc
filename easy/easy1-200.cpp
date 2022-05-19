@@ -31,4 +31,30 @@ You can return the answer in any order.
         }
         return ret;
     }
+    
+/* 
+9. Palindrome Number - easy
+
+Given an integer x, return true if x is palindrome integer.
+
+An integer is a palindrome when it reads the same backward as forward.
+
+For example, 121 is a palindrome while 123 is not.
+
+ */
+    bool isPalindrome(int x) {
+        // O(n), O(1)
+        if (x < 0) return false;
+        if (x == 0) return true;
+        int r = 0;
+        int i = log10(x);
+        for (; i > 0; i = i - 2) {
+            r = (r * 10) + (x % 10);
+            x = x / 10;
+        }
+        if (i == 0) {
+            x = x / 10;
+        }
+        return (r == x);
+    }
 };
