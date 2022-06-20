@@ -120,7 +120,8 @@ public:
         {
             n->left = nullptr;
             n->right = nullptr;
-        } else {
+        } else
+        {
             int i = (end + start)/2 -1;
             n->left = (start > i) ? nullptr : sortedArrayToBSTHelper(nums, start, i);
             i = (end + start)/2 + 1;
