@@ -169,6 +169,43 @@ public:
     }
     
     /*
+    20. Valid Parentheses
+    
+    Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+    An input string is valid if:
+
+    Open brackets must be closed by the same type of brackets.
+    Open brackets must be closed in the correct order.
+    */
+    bool isValid(string s) {
+        // O(n)/O(n)
+        vector<string> stack;
+        string c;
+        for (int k = 0; k < s.size(); k++) {
+            c = s.substr(k, 1);
+            if (c == "}") {
+                if (!stack.size() || stack.back() != "{") return false;
+                stack.pop_back();
+            }
+            else if (c == ")") {
+                if (!stack.size() || stack.back() != "(") return false;
+                stack.pop_back();
+            }
+            else if (c == "]")
+            {
+                if (!stack.size() || stack.back() != "[") return false;
+                stack.pop_back();
+            }
+            else
+            {
+                stack.push_back(c);
+            }
+        }
+        return stack.size() == 0;
+    }
+    
+    /*
     26. Remove Duplicates from Sorted Array
     
     Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same.
